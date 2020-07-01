@@ -11,7 +11,11 @@ def render_main_page():
 
 @app.route('/departures/<departure>/')
 def render_departures_page(departure):
-    return render_template('departure.html', departures=departures, departure=departure, tours=tours)
+    tour = {}
+    for key, value in tours.items():
+        if value['departure'] == departure:
+            tour[key] = value
+    return render_template('departure.html', departures=departures, departure=departure, tours=tour)
 
 
 @app.route('/tours/<id>/')
