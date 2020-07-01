@@ -1,12 +1,18 @@
 from flask import Flask, render_template
 from data import *
+import random
 
 app = Flask(__name__)
 
 
 @app.route('/')
 def render_main_page():
-    return render_template('index.html', departures=departures, tours=tours)
+    tour = {}
+    for k, v in tours.items():
+        if len(tour) == 6:
+            break
+        tour[k] = v
+    return render_template('index.html', departures=departures, tours=tour)
 
 
 @app.route('/departures/<departure>/')
