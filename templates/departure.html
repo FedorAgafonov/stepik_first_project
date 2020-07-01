@@ -5,7 +5,7 @@
 <p class="mb-4">Найдено  туров, от 26 000 до 84 600 и от 4 ночей до 15 ночей</p>
 <!-- CARDS -->
 <div class="row mt-5">
-{% for tour in tours.values() %}
+{% for key, tour in tours.items() %}
 {% if tour.departure==departure %}
   <div class="col-4">
     <div class="card mb-4">
@@ -13,7 +13,7 @@
       <div class="card-body">
         <h2 class="h5 card-title">{{ tour.title }}</h2>
         <p class="card-text">{{ tour.description|truncate(85) }}</p>
-        <a href="#" class="btn btn-sm btn-primary">Подробнее</a>
+        <a href="/tours/{{ key }}" class="btn btn-sm btn-primary">Подробнее</a>
       </div>
     </div>
   </div>

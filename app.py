@@ -14,9 +14,9 @@ def render_departures_page(departure):
     return render_template('departure.html', departures=departures, departure=departure, tours=tours)
 
 
-# @app.route('/tours/<id>/')
-# def render_tours_page(id):
-#     return render_template('tour.html', departures=departures)
+@app.route('/tours/<id>/')
+def render_tours_page(id):
+    return render_template('tour.html', departures=departures, data_for_tour=tours[int(id)])
 
 
 app.run('0.0.0.0', 8000)
