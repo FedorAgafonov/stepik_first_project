@@ -2,21 +2,19 @@
 
 {% block container %}
 <h1 class="display-5 mt-4">Летим {{ departures[departure] }}</h1>
-<p class="mb-4">Найдено {{ tours|length }} туров, от {{ (tours.values()|min(attribute="price")).price }} до {{ (tours.values()|max(attribute="price")).price }} и от {{ (tours.values()|min(attribute="nights")).nights }} ночей до {{ (tours.values()|max(attribute="nights")).nights }} ночей</p>
+<p class="mb-4">Найдено {{ tours|length }} туров, от {{ min_p }} до {{ max_p }} и от {{ min_n }} ночей до {{ max_n }} ночей</p>
 <div class="row mt-5">
 {% for key, tour in tours.items() %}
-{% if tour.departure==departure %}
   <div class="col-4">
-    <div class="card mb-4">
+    <div class="block card mb-4">
       <img src="{{ tour.picture }}" class="card-img-top img-fluid" alt="">
       <div class="card-body">
         <h2 class="h5 card-title">{{ tour.title }}</h2>
         <p class="card-text">{{ tour.description|truncate(85) }}</p>
-        <a href="/tours/{{ key }}" class="btn btn-sm btn-primary">Подробнее</a>
+        <a href="/tours/{{ key }}/" class="btn btn-sm btn-primary">Подробнее</a>
       </div>
     </div>
   </div>
-{% endif %}
 {% endfor%}
 </div>
 {% endblock %}
